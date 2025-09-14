@@ -6,7 +6,7 @@
 #CustomTypeIsFallback_1=false		define if the pattern is the fallback if no pattern in the list can match.
 #CustomTypeSaveLangSuffixe_1=true	if true, rebuild the output name with the target language suffixe (ex: mcmcfile_en.txt)		
 #CustomTypeSearchByLine_1=true		if true, analyse the text  with a single match per line, if false, process a match-again routine over the whole text in a raw. The later process might be very slow on big files.
-#CustomTypeLineLimit_1=50		define the maxium number of lines to look for a regex match, starting from the beginning.
+#CustomTypeLineLimit_1=50		define the maximum number of lines to look for a regex match, starting from the beginning.
 #CustomTypeSizeLimit_1=2048		define the maximum number of characters to look for a regex match, starting from the first one.
 #---------
 SupportedTxtExt=*.txt;*.ini;*.csv;*.pas;*.xml;*.json;*.pot;*.gek
@@ -68,7 +68,7 @@ CustomTypeSearchByLine_5=false
 CustomTypeLineLimit_5=50
 CustomTypeSizeLimit_5=2048
 #---------
-CustomTypeRegex_6=MessageExAlt.+".+\|(.+)"|Message\w{0,3}Ex.+"(.+)"|SetFormDescription "(.+)"|SetObjectiveText.+"(.+)"|Set\w{0,14}Name.+"(.+)"|Set\w{2,3}String.+" "(.+)"|Show\w{4,9}Menu.+"(.+)"|ShowWarning "(.+)"
+CustomTypeRegex_6=^[^;]*(?:Message(?:(?:Box)*Ex\s"|BoxExAlt.+"|ExAlt.+".+?\|)|Set(?:FormDescription\s"|ObjectiveText.+"|(?:Ammo|BodyPart|Full|MapMarker|NthFactionRank|Ref|RegionMap)*Name.+"|(?:MCM|UI)String.+"\)*\s")|Show(?:(?:Perk|Skill|TextInput)Menu.+"|Warning\s"))(.+?)"
 CustomTypeLabel_6=script
 CustomTypeEncoding_6=Utf8
 CustomTypeBackrefID_6=0
