@@ -5,13 +5,13 @@
 #CustomTypeRestrictExt_1=.txt		not used for now
 #CustomTypeIsFallback_1=false		define if the pattern is the fallback if no pattern in the list can match.
 #CustomTypeSaveLangSuffixe_1=true	if true, rebuild the output name with the target language suffixe (ex: mcmcfile_en.txt)		
-#CustomTypeSearchByLine_1=true		if true, analyse the text  with a single match per line, if false, process a match-again routine over the whole text in a raw. The later process might be very slow on big files.
+#CustomTypeSearchByLine_1=true		if true, analyse the text with a single match per line, if false, process a match-again routine over the whole text in a raw. The later process might be very slow on big files.
 #CustomTypeLineLimit_1=50		define the maximum number of lines to look for a regex match, starting from the beginning.
 #CustomTypeSizeLimit_1=2048		define the maximum number of characters to look for a regex match, starting from the first one.
 #---------
 SupportedTxtExt=*.txt;*.ini;*.csv;*.pas;*.xml;*.json;*.pot;*.gek
 #---------
-CustomTypeCount=7
+CustomTypeCount=9
 #---------
 CustomTypeRegex_1=^(\$.+?)\t+(.+)$
 CustomTypeLabel_1=mcm
@@ -68,48 +68,69 @@ CustomTypeSearchByLine_5=false
 CustomTypeLineLimit_5=50
 CustomTypeSizeLimit_5=2048
 #---------
-CustomTypeRegex_6=^[^;]*(?:Message(?:(?:Box)*Ex\s"|BoxExAlt.+"|ExAlt.+".+?\|)|Set(?:FormDescription\s"|ObjectiveText.+"|(?:Ammo|BodyPart|Full|MapMarker|NthFactionRank|Ref|RegionMap)*Name.+"|(?:MCM|UI)String.+"\)*\s")|Show(?:(?:Perk|Skill|TextInput)Menu.+"|Warning\s"))(.+?)"
-CustomTypeLabel_6=script
+CustomTypeRegex_6=^[^;](?::s*\[*\s*|\s*)"([^"]+)"[,\s\]\}]
+CustomTypeLabel_6=ex_mcm
 CustomTypeEncoding_6=Utf8
 CustomTypeBackrefID_6=0
-CustomTypeRestrictExt_6=.gek
+CustomTypeRestrictExt_6=.json
 CustomTypeSaveLangSuffixe_6=true
 CustomTypeIsFallback_6=false
-CustomTypeSearchByLine_6=true
-CustomTypeLineLimit_6=10000
-CustomTypeSizeLimit_6=1000000
-#-----fallback: catch each line directly--------
-CustomTypeRegex_7=^(.*)$
-CustomTypeLabel_7=Generic
-CustomTypeEncoding_7=Utf8
+CustomTypeSearchByLine_6=false
+CustomTypeLineLimit_6=50
+CustomTypeSizeLimit_6=2048
+#---------
+CustomTypeRegex_7=\$\w+=(.+)
+CustomTypeLabel_7=ex_mcm_ini
+CustomTypeEncoding_7=1252
 CustomTypeBackrefID_7=0
-CustomTypeRestrictExt_7=*
-CustomTypeSaveLangSuffixe_7=false
-CustomTypeIsFallback_7=true
+CustomTypeRestrictExt_7=.json
+CustomTypeSaveLangSuffixe_7=true
+CustomTypeIsFallback_7=false
 CustomTypeSearchByLine_7=true
 CustomTypeLineLimit_7=50
 CustomTypeSizeLimit_7=2048
+#---------
+CustomTypeRegex_8=\w+="(.+)"
+CustomTypeLabel_8=string_ini
+CustomTypeEncoding_8=Utf8
+CustomTypeBackrefID_8=0
+CustomTypeRestrictExt_8=.ini
+CustomTypeSaveLangSuffixe_8=true
+CustomTypeIsFallback_8=false
+CustomTypeSearchByLine_8=true
+CustomTypeLineLimit_8=50
+CustomTypeSizeLimit_8=2048
+#---------
+CustomTypeRegex_9=^[^;]\s*(?:let.+[:+]=\s|Message(?:Box)?Ex(?:Alt)?.+|Set(?:(?:FormDescription|ObjectiveText|(?:Ammo|BodyPart|Full|MapMarker|NthFactionRank|Ref|RegionMap)*Name).+|(?:MCM|UI)String.+"\)*\s)|Show(?:(?:Perk|Skill|TextInput)Menu.+)|(?:Sv|SV|sv)_(?:Capitalize|Compare|Construct|Count|Find|Insert|PadEnd|PadStart|Percentify|RegexMatch|RegexReplace|RegexSearch|Replace|Set|Split|ToLower|ToUpper).+)"(.+?)"
+CustomTypeLabel_9=script
+CustomTypeEncoding_9=Utf8
+CustomTypeBackrefID_9=0
+CustomTypeRestrictExt_9=.gek
+CustomTypeSaveLangSuffixe_9=true
+CustomTypeIsFallback_9=true
+CustomTypeSearchByLine_9=true
+CustomTypeLineLimit_9=50
+CustomTypeSizeLimit_9=2048
+#-----fallback: catch each line directly--------
+CustomTypeRegex_10=^(.*)$
+CustomTypeLabel_10=Generic
+CustomTypeEncoding_10=Utf8
+CustomTypeBackrefID_10=0
+CustomTypeRestrictExt_10=*
+CustomTypeSaveLangSuffixe_10=false
+CustomTypeIsFallback_10=true
+CustomTypeSearchByLine_10=true
+CustomTypeLineLimit_10=50
+CustomTypeSizeLimit_10=2048
 #---------testPOT 
-#CustomTypeRegex_8=^(?!#)msgctxt "(.*?)"$^(?!#)msgid "(.*?)"$
-#CustomTypeRegex_8=msgctxt "(.*?)".*?msgid "(.*?)"
-#CustomTypeLabel_8=POT_1
-#CustomTypeEncoding_8=Utf8
-#CustomTypeBackrefID_8=1
-#CustomTypeRestrictExt_8=.pot
-#CustomTypeSaveLangSuffixe_8=false
-#CustomTypeIsFallback_8=false
-#CustomTypeSearchByLine_8=false
-#CustomTypeLineLimit_8=50
-#CustomTypeSizeLimit_8=2048
-#---------test
-#CustomTypeRegex_9="form_id": "(.*?)",.*?"original": "(.*?)",
-#CustomTypeRegex_9="original": "(.*?)",
-#CustomTypeLabel_9=Json
-#CustomTypeEncoding_9=Utf8
-#CustomTypeBackrefID_9=0
-#CustomTypeRestrictExt_9=.txt
-#CustomTypeSaveLangSuffixe_9=false
-#CustomTypeIsFallback_9=false
-#CustomTypeSearchByLine_9=true
-#CustomTypeLineLimit_9=50
-#CustomTypeSizeLimit_9=2048
+#CustomTypeRegex_11=^(?!#)msgctxt "(.*?)"$^(?!#)msgid "(.*?)"$
+#CustomTypeRegex_11=msgctxt "(.*?)".*?msgid "(.*?)"
+#CustomTypeLabel_11=POT_1
+#CustomTypeEncoding_11=Utf8
+#CustomTypeBackrefID_11=1
+#CustomTypeRestrictExt_11=.pot
+#CustomTypeSaveLangSuffixe_11=false
+#CustomTypeIsFallback_11=false
+#CustomTypeSearchByLine_11=false
+CustomTypeLineLimit_11=50
+CustomTypeSizeLimit_11=2048
